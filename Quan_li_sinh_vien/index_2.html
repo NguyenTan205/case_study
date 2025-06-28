@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lí học viên</title>
+  <style>
+    /* style.css */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ccccff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 8px 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid black;
+      border: 1px solid
+    }
+
+    th {
+      background-color: cornflowerblue;
+      color: white;
+      border: 1px solid black;
+      text-align: center;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    button + button {
+      background-color: #dc3545;
+    }
+
+    button + button:hover {
+      background-color: #c82333;
+    }
+    .bang-khong-duong-ke,
+    .bang-khong-duong-ke tr,
+    .bang-khong-duong-ke td {
+      border: none;         /* Loại bỏ đường viền */
+      border-collapse: collapse; /* Đảm bảo không có đường viền ẩn */
+      padding: 8px;         /* Thêm khoảng cách cho đẹp */
+      text-align: left;     /* Căn lề trái cho nội dung */
+    }
+
+    .bang-khong-duong-ke {
+      width: 100%;          /* Độ rộng bảng */
+    }
+
+
+  </style>
+</head>
+<body>
+<img src="utc.png" alt="logo" width="782" height="85">
+<video width="782"; height="440" controls><source src="sakura.mp4"></video>
+<h1 style="background: #6496ed; height: 40px; line-height: 45px">QUẢN LÍ SINH VIÊN</h1>
+<table>
+  <tr>
+    <td colspan="2" style="text-align: center; background: #04cc36">THÔNG TIN HỌC VIÊN</td>
+  </tr>
+  <tr>
+    <td>Mã sinh viên</td>
+    <td>
+      <input type="number" name="ID" id="ID" placeholder="Nhập mã sinh viên" STYLE="width: 210px; height: 25px " />
+    </td>
+  </tr>
+  <tr>
+    <td>Họ tên</td>
+    <td>
+      <input type="text" name="hoTen" id="hoTen" placeholder="Nhập họ tên">
+    </td>
+  </tr>
+  <tr>
+    <td>Ngày sinh</td>
+    <td>
+      <input type="date" name="ngaySinh" id="ngaySinh" placeholder="Nhập ngày sinh">
+    </td>
+  </tr>
+  <tr>
+    <td>Giới tính</td>
+    <td>
+      <label>
+        <input type="radio" name="gioitinh" id="nam" value="Nam">Nam
+      </label>
+      <label>
+        <input type="radio" name="gioitinh" id="nu" value="nu">Nữ
+      </label>
+      <label>
+        <input type="radio" name="gioitinh" id="LGBT" value="7mau">LGBT
+      </label>
+    </td>
+  </tr>
+  <tr>
+    <td>Lớp</td>
+    <td>
+      <input type="text" name="Lop" id="Lop" placeholder="Nhập lớp">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="text-align: center; background: #04cc36">
+      <button type="button" style="text-align: center; background: blue" onclick="luuSinhVien()">Lưu</button>
+    </td>
+  </tr>
+</table>
+<h2 style="text-align: center; background: #6496ed; height: 35px; line-height: 35px">DANH SÁCH SINH VIÊN</h2>
+<input type="text" name="timKiem" id="timKiem" oninput="timKiemSinhVien()" placeholder="Nhập tên sinh viên hoặc mã sinh viên" style="width: 370px">
+<button type="button" onclick="timKiemSinhVien()">Tìm kiếm</button>
+<label>Chọn lớp</label>
+<select id="chonlop" onchange="locSinhVien()">
+  <option value="all">Tất cả</option>
+  <option value="C01">C01</option>
+  <option value="C02">C02</option>
+  <option value="C03">C03</option>
+  <option value="C04">C04</option>
+  <option value="C05">C05</option>
+</select>
+<label>Chọn giới tính</label>
+<select id="chongioitinh" onchange="locSinhVien()">
+  <option value="all">Tất cả</option>
+  <option value="Nam">Nam</option>
+  <option value="Nữ">Nữ</option>
+  <option value="LGBT">LGBT</option>
+</select>
+<table id="bangSinhVien">
+  <thead>
+  <tr>
+    <th>Mã sinh viên</th>
+    <th>Họ tên</th>
+    <th>Ngày sinh</th>
+    <th>Giới tính</th>
+    <th>Lớp</th>
+    <th>Thao tác</th>
+  </tr>
+  </thead>
+  <tbody id="dulieu"></tbody>
+  <script src="main_2.js"></script>
+</table> <br><br>
+<img src="utc_logo.png" alt="logo" width="180" height="50">
+<table class="bang-khong-duong-ke">
+  <tr>
+    <td>Liên hệ với chúng tôi</td>
+    <td>Trường đại học giao thông vận tải</td>
+  </tr>
+  <tr>
+    <td>
+      Địa chỉ: Số 3 phố Cầu Giấy, P.Láng Thượng, Q.Đống Đa, Hà Nội.<br>
+      Điện thoại: (84.24) 37663311 - Fax: (84.24)37669613.<br>
+      Email: dhgtvt@utc.edu.vn.<br>
+      Theo dõi chúng tôi:
+    </td>
+    <td style="text-align: center">
+      <a href="https://rg.com.vn/0ChRX" target="_blank">
+        <img src="map.png" alt="Map" width="100" height="60">
+      </a>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://www.facebook.com" target="_blank">
+        <img src="face.png" alt="Facebook" width="15" height="15">
+      </a>
+      <a href="https://www.twitter.com" target="_blank">
+        <img src="tiwte.png" alt="Twitter" width="15" height="15">
+      </a>
+      <a href="https://www.youtube.com" target="_blank">
+        <img src="youtube.png" alt="Youtube" width="15" height="15">
+      </a>
+      <a href="https://www.instagram.com" target="_blank">
+        <img src="insta.png" alt="Instagram" width="15" height="15">
+      </a>
+      <a href="https://www.tiktok.com" target="_blank">
+        <img src="tiktok.png" alt="TikTok" width="15" height="15">
+      </a>
+    </td>
+    <td>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

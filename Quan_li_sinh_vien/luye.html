@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hiển thị 2 bảng</title>
+  <style>
+    .container {
+      display: flex; /* Giúp 2 bảng nằm ngang */
+      justify-content: space-around; /* Tạo khoảng cách đều nhau */
+      margin-top: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 300px;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Danh sách sinh viên</h1>
+
+<div class="container">
+  <!-- Bảng 1 -->
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Họ tên</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>001</td>
+      <td>Nguyễn Văn A</td>
+    </tr>
+    <tr>
+      <td>002</td>
+      <td>Trần Thị B</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Bảng 2 -->
+  <table>
+    <thead>
+    <tr>
+      <th>Lớp</th>
+      <th>Giới tính</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>10A1</td>
+      <td>Nam</td>
+    </tr>
+    <tr>
+      <td>10A2</td>
+      <td>Nữ</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
